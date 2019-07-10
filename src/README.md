@@ -25,9 +25,10 @@ Design :
 			1. adding unique identifier to hash table
 			2. adding each column value to the corresponding list (may need to check for type consistency?)
 
-Optimization:
-	Grouping - Use a hash table for grouping departments
-	Aggregation - 
+Operation to implement:
+	Join - merge data from different csv on a key - explore merge based and has based joins
+	Grouping - Use a hash table for grouping (departments)
+	Aggregation - count from the hash table 
 
 
 Output : results in a CSV file
