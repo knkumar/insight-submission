@@ -37,6 +37,10 @@ The repository strucutre provides organization of input, output, source and test
 	* #run.sh is the shell script to execute purchase analytics with instructions below
 	* #README.md is this file 
 
+## tests
+1. CSV strucure
+2. Value validation
+
 ## Instruction to run purchase analytics
 
 

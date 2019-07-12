@@ -27,6 +27,7 @@ Design :
 
 Operation to implement:
 	Join - merge data from different csv on a key - explore merge based and has based joins
+		1. check if key to join in unique
 	Grouping - Use a hash table for grouping (departments)
 	Aggregation - count from the hash table 
 
