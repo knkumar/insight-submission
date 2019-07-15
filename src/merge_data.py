@@ -4,7 +4,7 @@ from readData import Data
 
 def merge_data(data_join, data, column):
     """
-    Perform left join on the datasets. larger data is left and smaller data is right.
+    Perform left join on the data objects. Larger data is assigned to left and smaller data is assigned to right.
     Ideally the column to be joined on has unique values to facilitate quick processing of the join.
     If the join is performed on non-unique column the design of the data containment structure needs to be revisited.
     Parameters
@@ -17,7 +17,7 @@ def merge_data(data_join, data, column):
     -------
     data object merged on common column
 
-    To-Do: work on selecting certain columns from both data
+    To-Do: work on selecting certain columns from both data when merging.
     """
     # determine the smaller dataset to hash and join
     # set smaller data to right

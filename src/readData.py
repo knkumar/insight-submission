@@ -17,10 +17,15 @@ class Data(object):
 
     Methods
     ----------
-    get_row_by_num :
-    _get_col_by_num :
-    _get_col_by_name :
-    select_columns :
+    get_row_by_num : Select multiple rows given number and allow option to skip columns.
+    _get_col_by_num : Select multiple columns from data object.
+    _get_col_by_name : Select column given column name.
+    select_columns : Select multiple columns from data object.
+    select_rows : Select multiple rows from data object.
+    create_index : Create index adding elements one at a time. This is useful when reading a file to create index on the fly.
+    _create_index_column : Create index on an existing column.
+    group : Create an index for given column.
+    aggregate : Function for future implementation.
 
     """
 
@@ -40,6 +45,16 @@ class Data(object):
         self.col_types = []
 
     def get_row_by_num(self, num, skip=None):
+        """
+        Select multiple rows given number and allow option to skip columns.
+        Parameters
+        ----------
+        num : row numbers to select from data object
+        skip : column numbers to skip
+        Returns
+        -------
+        list of columns with selected rows
+        """
         if type(num) is int:
             num = [num]
         if type(skip) is int:
@@ -59,6 +74,7 @@ class Data(object):
 
     def select_columns(self, columns):
         """
+        Select multiple columns from data object.
         Parameters
         ----------
         columns : column to select from data
@@ -77,6 +93,7 @@ class Data(object):
 
     def select_rows(self, rows):
         """
+        Select multiple rows from data object.
         Parameters
         ----------
         rows : rows to select from data
@@ -95,17 +112,17 @@ class Data(object):
 
     def create_index(self, identifier, linenum, csv_name, unique=True):
         """
+        Create index adding elements one at a time. This is useful when reading a file to create index on the fly.
         Parameters
         ----------
         identifier : object to merge 
         linenum : column to merge on
-        csv_name : 
-        unique : 
+        csv_name : name of csv file for error in indexing
+        unique : determines if column should have unique values and single row for each value
         Returns
         -------
         data object merged on common column
 
-        To check: if the key is common for both data
         """
         self.index = defaultdict(list)
         # raise exception when duplicates occur in indexed column
@@ -118,19 +135,14 @@ class Data(object):
 
     def _create_index_column(self, column):
         """
+        Create index on an existing column.
         Parameters
         ----------
-        data : object to merge 
         column : column to group by
         Returns
         -------
         data object grouped on column
         """
-        # for linenum,item in enumerate(column):
-        #     if unique and (item in self.index):
-        #         raise csvError(csv_name,"Indexed column has non-unique values.\nThe column specified for index could be incorrect or the file could contain errors.\nPlease check your function call.")
-        #     else:
-        #         self.index[item].append(linenum)
         unique = True
         group = defaultdict(list)
         for linenum, item in enumerate(self.data[column]):
@@ -141,6 +153,7 @@ class Data(object):
 
     def group(self, column):
         """
+        Create an index for given column.
         Parameters
         ----------
         column : column to group by
@@ -159,6 +172,7 @@ class Data(object):
 
 def read_csv(csv_name, index=None, unique=True):
     """
+    read a csv file and create a data object.
     Parameters
     ----------
     csv_name : path to csv file for reading data in csv format
@@ -170,7 +184,7 @@ def read_csv(csv_name, index=None, unique=True):
     data object from csv file
     """
     csv_data = Data(index)
-    print(csv_name)
+    print("Reading file {0}".format(csv_name))
     f_handle = open(csv_name, "r")
     for linenum, line in enumerate(f_handle.readlines()):
         # process header of csv file to gather informaton about column names
@@ -184,7 +198,6 @@ def read_csv(csv_name, index=None, unique=True):
         if '"' in line:
             match = re.match(r'(\d*),(.*),(\d*),(\d*)', line)
             values = list(match.groups())
-            # print(values)
         else:
             values = line.strip().split(',')
         # check for values equal to number of columns established

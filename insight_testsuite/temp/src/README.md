@@ -1,0 +1,50 @@
+# Code design and organizaton for purchase analytics problem
+
+
+##  Problem Statement
+Calculate Purchase analytics statistics using basic python data structures.
+For each department calculate:
+
+1. Number of times a product was requested
+2. Number of times a product was requested for the first time
+3. Ratio of the two numbers
+
+```
+Input : multiple csv files with a certain number of records and attributes (columns)
+
+Design :
+	For each csv file:
+		identify number of rows, columns
+
+		intialize a hash table for unique identifier
+			- key is the unique identifier
+			- value is the row number
+		initalize empty list for each column
+
+		process rows by
+			1. adding unique identifier to hash table
+			2. adding each column value to the corresponding list (may need to check for type consistency?)
+
+Operation to implement:
+	Join - merge data from different csv on a key - explore merge based and has based joins
+		1. check if key to join in unique
+	Grouping - Use a hash table for grouping (departments)
+	Aggregation - count from the hash table 
+
+
+Output : results in a CSV file
+
+```
+
+## readData.csv
+readData.csv define the readData class which defines the data class
+
+
+## merge_data.py
+
+
+## purchase_analytics.py
+
+
+## create_test.py
+

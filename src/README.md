@@ -37,11 +37,42 @@ Output : results in a CSV file
 ```
 
 ## readData.csv
-readData.csv define the readData class which defines the data class
+readData.csv define the readData class which defines the data class with the following attributes and methods
+
+	Attributes
+    ------------
+    data : list of lists representing columns in data
+    index : column on which index is created, defaults to none
+    nrows : number of rows in data
+    ncols : number of columns in data
+    col_name : dictionary of column names in data frame mapping to index in data list
+    col_types : types of data for conversion when parsing
+
+    Methods
+    ----------
+    get_row_by_num : Select multiple rows given number and allow option to skip columns.
+    _get_col_by_num : Select multiple columns from data object.
+    _get_col_by_name : Select column given column name.
+    select_columns : Select multiple columns from data object.
+    select_rows : Select multiple rows from data object.
+    create_index : Create index adding elements one at a time. This is useful when reading a file to create index on the fly.
+    _create_index_column : Create index on an existing column.
+    group : Create an index for given column.
+    aggregate : Function for future implementation.
 
 
 ## merge_data.py
+Perform left join on the data objects. Larger data is assigned to left and smaller data is assigned to right. Ideally the column to be joined on has unique values to facilitate quick processing of the join. If the join is performed on non-unique column the design of the data containment structure needs to be revisited.
 
+	Parameters
+    ----------
+    data_join : first object to merge (1)
+    data : second object to merge (2)
+    column : column to perform merge on
+
+    Returns
+    -------
+    data object merged on common column
 
 ## purchase_analytics.py
 
