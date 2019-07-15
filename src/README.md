@@ -75,7 +75,24 @@ Perform left join on the data objects. Larger data is assigned to left and small
     data object merged on common column
 
 ## purchase_analytics.py
-
+The "main" file which 
+1. Parses arguments from the command line
+```
+# 1. input order file location to read file from
+# 2. order index column
+# 3. input products file location to read file from
+# 4. product index column
+# 5. output file location to write results
+```
+2. Reads data from csv and selects relevant columns for processing
+3. Merge data objects based on column name for aggregation and processing
+4. Group merged products-orders by department
+5. Groups orders by reordered status and get items ordered for first time
+6. Create result structure to store department counts
+7. Sort department and write to file
 
 ## create_test.py
+Use pandas to select a subset of the large file for testing
+
+
 

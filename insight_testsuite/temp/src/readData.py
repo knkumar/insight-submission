@@ -184,7 +184,7 @@ def read_csv(csv_name, index=None, unique=True):
     data object from csv file
     """
     csv_data = Data(index)
-    print(csv_name)
+    print("Reading file {0}".format(csv_name))
     f_handle = open(csv_name, "r")
     for linenum, line in enumerate(f_handle.readlines()):
         # process header of csv file to gather informaton about column names
@@ -198,7 +198,6 @@ def read_csv(csv_name, index=None, unique=True):
         if '"' in line:
             match = re.match(r'(\d*),(.*),(\d*),(\d*)', line)
             values = list(match.groups())
-            # print(values)
         else:
             values = line.strip().split(',')
         # check for values equal to number of columns established
