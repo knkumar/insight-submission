@@ -1,8 +1,13 @@
 import pandas as pd
 import timeit
 
-orders = pd.read_csv("../insight_testsuite/tests/test_2/input/order_products.csv")
-products = pd.read_csv("../insight_testsuite/tests/test_2/input/products.csv")
+# orders = pd.read_csv("../insight_testsuite/tests/test_2/input/order_products.csv")
+# products = pd.read_csv("../insight_testsuite/tests/test_2/input/products.csv")
+
+orders = pd.read_csv("../../test_2/input/order_products.csv")
+products = pd.read_csv("../../test_2/input/products.csv")
+orders = orders.iloc[1:500000,:]
+orders.to_csv('order_products.csv',  sep=',', index=False)
 
 merged = orders.merge(products)
 

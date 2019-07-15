@@ -60,10 +60,7 @@ function compare_outputs {
   OUTPUT_FILENAME=report.csv
   PROJECT_ANSWER_PATH1=${GRADER_ROOT}/temp/output/${OUTPUT_FILENAME}
   TEST_ANSWER_PATH1=${GRADER_ROOT}/tests/${test_folder}/output/${OUTPUT_FILENAME}
-  # echo "Compare outputs"
-  echo $TEST_ANSWER_PATH1
-  cat $PROJECT_ANSWER_PATH1
-  cat $TEST_ANSWER_PATH1
+  echo "Compare outputs"
 
   DIFF_RESULT1=$(diff -bB ${PROJECT_ANSWER_PATH1} ${TEST_ANSWER_PATH1} | wc -l)
   if [ "${DIFF_RESULT1}" -eq "0" ] && [ -f ${PROJECT_ANSWER_PATH1} ]; then
