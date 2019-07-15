@@ -27,6 +27,8 @@ The repository strucutre provides organization of input, output, source and test
 	|- Output
 	|- src
 	|- insight_testsuite
+		|- test_1
+		|- test_2
 	|- run.sh
 	|- README.md
 

@@ -35,3 +35,16 @@ Operation to implement:
 Output : results in a CSV file
 
 ```
+
+## readData.csv
+readData.csv define the readData class which defines the data class
+
+
+## merge_data.py
+
+
+## purchase_analytics.py
+
+
+## create_test.py
+
