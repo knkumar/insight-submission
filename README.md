@@ -50,7 +50,7 @@ $cd $ROOT #insight-submission directory
 $sh run.sh
 ```
 
-Also can use python file directly
+User can also can run python file directly
 
 ```
 # call python file purchase_analytics.py with arguments
